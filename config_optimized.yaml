@@ -32,7 +32,7 @@ production_line:
   
   machines:
     - name: "Machine A"
-      processing_time_minutes: 4    # Consider: Can this be reduced?
+      processing_time_minutes: 5    # Consider: Can this be reduced?
       mtbf_hours: 10                # FIXED - cannot modify
       mttr_hours: 2                 # FIXED - cannot modify
       
@@ -42,7 +42,7 @@ production_line:
       mttr_hours: 3                 # FIXED - cannot modify
       
     - name: "Machine C"
-      processing_time_minutes: 5    # Consider: Already fastest machine
+      processing_time_minutes: 4    # Consider: Already fastest machine
       mtbf_hours: 12                # FIXED - cannot modify
       mttr_hours: 2.5               # FIXED - cannot modify
 
@@ -59,14 +59,50 @@ logistics:
     car_issue_prob: 0.05        # FIXED - cannot modify
     issue_delay_hours: 4        # FIXED - cannot modify
 
-# ============================================
-# YOUR OPTIMIZATION NOTES:
-# ============================================
-# Change 1: [Describe what you changed and why]
-#
-# Change 2: [Describe what you changed and why]
-#
-# Change 3: [Describe what you changed and why]
-#
-# Expected Impact: [What improvement do you expect?]
-# ============================================
+# ============================================ 
+
+# YOUR OPTIMIZATION NOTES: 
+
+# ============================================ 
+
+# Change 1: [Lower machine B prosessing time to 5 minutes. In baseline B takes the most time to process and it is the primary bottleneck. 
+
+# When B process time changes from 7 to 5, the throughput increases allowing C to receive work more consistently. Blocking is also reduced. 
+
+# A spends less time waiting because B clears its queue faster. Orders also move faster since the slowest step is now quicker. Machine failtures 
+
+# have less impact because bottleneck is less severe.] 
+
+# 
+
+# Change 2: [Raising both buffers to 15. This reduces delays and improves throughput. Upstream machines don't have to stop when the next machine is busy, so production 
+
+#  should flow more smoothly. Also more work-in-progress can wait in the buffer, keeping downstream machines busy.] 
+
+# 
+
+# Change 3: [Raising storage capacity from 500 to 550. This ensures there are enough parts available even if demand spikes, preventing production stoppages. 
+
+# This prevents unnecessary idle time at the end of the line when output temporaly exceeds shipment rate.] 
+
+# 
+
+# Change 4: [Raising finished storage from 30 to 50. This provides enough storage for completed products so that C can continue producing without waiting.] 
+
+# 
+
+# Expected Impact: [ 
+
+# 1. Throughput increase -> reducing B's processing time and increasing buffers allows more products to be completed per hour. Expected throughput should increase. 
+
+# 2. Reduced lead time -> Faster bottleneck processing and larger buffers reduce waiting times, so orders move through the system more quickly. 
+
+# 3. Lower delay rate -> Larger buffers absorb variability from machine failtures, preventing upstream blocking. The delay rate is expected to be 0. 
+
+# 4. Balanced machine utilization -> B is less overloaded and upstream/downstream machines spend less time idle, leading to smoother production flow. 
+
+# 5. Resiliency improvement -> Increased warehouse and finished storage capacities reduce risk of production stoppages.] 
+
+# 
+
+# ============================================ 
