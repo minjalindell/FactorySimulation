@@ -24,15 +24,15 @@ order_arrival:
 # MODIFIABLE: You can adjust these to optimize inventory management
 parts_warehouse:
   initial_parts: 200            # Starting inventory
-  capacity: 550                 # Maximum storage capacity
+  capacity: 500                 # Maximum storage capacity
   replenishment_interval_hours: 12  # How often parts are delivered
   replenishment_quantity: 100   # How many parts per delivery
 
 # Production Line Parameters
 production_line:
   # Buffer sizes between machines - MODIFIABLE
-  buffer_A_B_size: 15            # Queue capacity between Machine A and B
-  buffer_B_C_size: 15            # Queue capacity between Machine B and C
+  buffer_A_B_size: 5            # Queue capacity between Machine A and B
+  buffer_B_C_size: 5            # Queue capacity between Machine B and C
   
   machines:
     - name: "Machine A"
@@ -41,19 +41,19 @@ production_line:
       mttr_hours: 2                 # (FIXED) Mean Time To Repair
       
     - name: "Machine B"
-      processing_time_minutes: 5   # MODIFIABLE: Time to process one item
+      processing_time_minutes: 7    # MODIFIABLE: Time to process one item
       mtbf_hours: 15                # (FIXED) Mean Time Between Failures
       mttr_hours: 3                 # (FIXED) Mean Time To Repair
       
     - name: "Machine C"
-      processing_time_minutes: 4   # MODIFIABLE: Time to process one item
+      processing_time_minutes: 4    # MODIFIABLE: Time to process one item
       mtbf_hours: 12                # (FIXED) Mean Time Between Failures
       mttr_hours: 2.5               # (FIXED) Mean Time To Repair
 
 # Finished Products Storage Parameters
 # MODIFIABLE: Adjust to balance WIP inventory vs throughput
 finished_storage:
-  capacity: 50                  # Maximum finished goods storage
+  capacity: 30                  # Maximum finished goods storage
 
 # Logistics Parameters
 # MODIFIABLE: Adjust shipping frequency and capacity

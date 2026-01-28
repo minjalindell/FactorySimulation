@@ -14,7 +14,7 @@ simulation:
 
 # Order Arrival Parameters (DO NOT MODIFY)
 order_arrival:
-  interarrival_time_hours: 0.5  # Keep same - this is the demand rate
+  interarrival_time_hours: 0.15  # Keep same - this is the demand rate
 
 # Parts Warehouse Parameters
 # TODO: Analyze if parts availability is a constraint
